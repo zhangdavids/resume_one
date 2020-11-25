@@ -1,0 +1,97 @@
+% !TEX program = xelatex
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !Mode:: "TeX:UTF-8"
+
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
+%\usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
+\usepackage{linespacing_fix} % disable extra space before next section
+\usepackage{cite}
+
+\begin{document}
+\pagenumbering{gobble} % suppress displaying page number
+
+\name{张俊 John}
+
+\basicInfo{
+  \email{zhangjohn202@gmail.com} \textperiodcentered\ 
+  \phone{(+86)136-3134-1244(wechat)} \textperiodcentered\
+}
+
+\section{\faHeartO\ 求职意愿}
+\datedline{devops / 运维开发工程师}{}
+
+\section{\faGraduationCap\ 教育背景}
+\datedsubsection{\textbf{武汉理工大学}, 武汉, 湖北}{2009 -- 2013}
+\textit{学士}\ {软件工程}
+
+\section{\faUsers\ 工作经历}
+\datedsubsection{\textbf{北京希嘉创智},   武汉}{2018年5月 -- 至今}
+\role{python工程师}
+
+\begin{itemize}
+  \item 架构设计将原来ruby on rails 的 data\_govern 项目重构，技术栈 python3.6 django2.0 mysql redis等，主要实现学校数据资产sqlserver、oracle、mysql三种数据源的可落地交付的采集分析。整个系统分为五个部分，数据管理包含数据源、元数据、主数据等。标准管理包含检查的标准和代码集，接口管理预留odi和kettle，再然后是质量分析和系统设置部分。学校的数据资产较为分散，多种数据库数据共存，添加不同的数据源之后，对数据进行简单的抽取展示，再对数据表的字段绑定规则，例如非空性、唯一性、值域正确性、枚举正确性、正则匹配性、关联一致性等，再根据对象进行自定义的检测，同时为了达到自动化的效果，引入redis celery，可以定时定量对数据进行查询并展示，尽可能减少人工重复工作的干预。
+  
+\end{itemize}
+
+\datedsubsection{\textbf{深圳中软国际},   深圳}{2017年2月 -- 2018年5月}
+\role{python开发工程师}
+
+\begin{itemize}
+  \item python django 框架 网络虚拟化（NFV）项目，项目的自动化、插件化、远程化、 并行化 
+  \item 情境：原来的网络虚拟化项目是直接在本地的服务器上运行一系列的插件 将云操作系统进行设置和部署，现在需要远程化、并行化，即在a地进行总控，可在b、c、d地多处进行一键自动化部署。同时，需要对数据的抽取实现初步的自动化，也要尽量地缩短部署时间。
+  \item 任务： 对原来部署的数据来源lld模版进行读取分析，读取excel的数据存入到数据库中，根据一定的规则由sql语句将数据进行抽取，把原来cfg的配置文件转化为json文件，供插件使用。
+  原来单线程的线性插件部署，如何充分利用多线程来进行优化。
+  \item 行动： 先直接将excel数据转存到sqlite3，对存入当中的不规则的数据进行清洗转换。再写一条一条的sql查询语句将数据抽取出来，最后进行组合。初步完成ce6851、os5500v3、e9000、fs、fsm五个插件所需数据的简易自动化。另外，原来自动化部署的软件包是直接上传的，扩展为可以根据名字进行查询，从远端拉取到总控端，再由总控端进行分发（http、ftp、华为support的扩展）。插件如何充分多进程，利用openstack相关的taskflow库，将一个硬件或者软件对象的部署细分为多个task，利用taskflow的特性，保证长流任务执行的可靠性和一致性。主要可以在失败后恢复以及回滚，根据e9000部署文档，将可以并行的部件并行执行，大大提高部署效率。同时也改写完成刀片服务器E9000升级包升级插件编写。
+  \item 结果： 实现数据的半自动化获取。将单点的本地上传软件包扩展为可上传、可远端查询拉取的多种方式获取。e9000插件利用taskflow的并行化task执行之后，效率提高百分之五十以上，优化成功。如何选择合适的开源软件以提升开发效率，同时需要详细学习开源软件的设计和架构思想。
+\end{itemize}
+
+\datedsubsection{\textbf{深圳软通动力},   深圳}{2015年3月 -- 2017年2月}
+\role{ruby、python后端开发工程师}
+
+\begin{itemize}
+  \item cloudify插件编写，参照openstack的插件，实现华为机群的编排（筛选组网安装os集成task等功能）
+  \item 将ansible、fabric的功能集成到ruby rails框架当中
+\end{itemize}
+
+\role{python测试开发工程师}
+
+\begin{itemize}
+  \item python 项目手机日志采集分析的 TDD 、单元测试 功能测试，确保一个程序模块的行为符合设计的测试用例 以及数据库数据的自动化查询维护
+  \item 编写 python 脚本实现华为手机 apk 中基线的解析，并自动输出基线遵从报告
+\end{itemize}
+
+\section{\faHeart~\faHeart\ 自我学习}
+\begin{itemize}
+  \item python的爬虫学习，使用urllib库 bs requests scrapy结合mongodb对网页进行爬取，并将需要展示的数据图形化。
+  \item 深度学习爱好者，初步实现五个实战项目。简单的神经网络预测共享单车的使用情况，利用神经网络来识别图片当中的物体，电视剧剧本的生成，翻译机器人，生成原创的人脸图像。tensorflow未来有望成为类似手机系统安卓的存在，因此了解是必须的。keras是以cntk、theano、tensorflow之一作为实际后台的建模环境，可以将用户从繁杂的数学公式命令中解救出来，也是必须了解的。另外，数据分析可以使用scikit-learn 或者是 statsmodels 进行分析处理，详细选择还需要具体情况具体分析。
+  \item 关系数据库选型比较鉴别：mysql和pg，虽然众多中国开发者都选择mysql，但是pg仍然不可小视。pg的稳定性极强，在高并发读写、负载逼近极限下，pg的性能指标仍然可以维持双曲线甚至对数曲线，到顶峰后不再下降。pg在gis多年处于领先地位。pg的“无锁定”特性非常突出。pg可以使用函数和条件索引，另外还有极其强悍的sql编程能力。
+  \item 自动化工具 ansible saltstack对比分析：ansible基于ssh服务执行，使用轮询方式；salt基于消息队列，性能相当好的c/s架构。1.agentless选择ansible，2.机器过千选择saltstack会好一些，3.开源社区对接，ansible更受关注
+  \item 前端框架 vue react初步学习。react虚拟化dom 组件化的开发可以重复利用，但是react只是一个view层，还需要路由库，执行单向流库、web api调用库、测试库、依赖管理库等等，需要额外大量工作。而vuejs作为中国人开发的前端框架，相对适合小规模团队，简单同时也能提高效率。
+  \item 消息中间件 kafka 用起来略微复杂，RabbitMQ性能太弱...消息中间件大道至简：一发一存一消费，没有最好的消息中间件，只有最合适的消息中间件
+  \item redis 基于redis pub/sub
+  主题订阅模式，将从火币官方获取的行情数据进行综合使用
+\end{itemize}
+
+
+\section{\faCogs\ IT 技能}
+% increase linespacing [parsep=0.5ex]
+\begin{itemize}[parsep=0.5ex]
+  \item 编程语言: Python Ruby R Java C C++
+  \item 平台: Linux Mac
+\end{itemize}
+
+
+
+\section{\faInfo\ 其他}
+% increase linespacing [parsep=0.5ex]
+\begin{itemize}[parsep=0.5ex]
+  \item 语言: 英语 - 熟练(读写六级)
+\end{itemize}
+
+%% Reference
+%\newpage
+%\bibliographystyle{IEEETran}
+%\bibliography{mycite}
+\end{document}
